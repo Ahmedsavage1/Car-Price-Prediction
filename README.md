@@ -20,6 +20,12 @@ Car Price Prediction/
 └── README.md
 ```
 
+## Dataset
+
+This project uses the [Used Cars Dataset](https://www.kaggle.com/datasets/ayushparwal2026/cars-dataset) from Kaggle (not included in this repo — see below).
+
+To run the notebooks, download `train-data.csv`, rename it to `used_cars_data.csv`, and place it in `data/raw/`.
+
 ## Pipeline
 
 **1. Data Cleaning (row-level, before split — no leakage possible)**
