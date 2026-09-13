@@ -23,6 +23,12 @@ owner_order = {'First': 1, 'Second': 2, 'Third': 3, 'Fourth & Above': 4}
 # Numeric columns that were scaled during training (Seats was kept unscaled, on purpose)
 numeric_cols = ['Kilometers_Driven', 'Mileage', 'Engine', 'Power', 'Car_Age']
 
+# Full list of real brand names the user can pick from = the 13 main brands (dropdown_options['Brand'])
+# PLUS the rare ones that got grouped into "Other" during training (rare_brands.pkl).
+# Built from these two saved artifacts directly, so it's guaranteed to match training exactly
+# (no manual/guessed brand list that could go stale or contain a typo).
+all_brands = sorted(list(dropdown_options['Brand']) + list(rare_brands))
+
 st.title("Used Car Price Predictor")
 st.write("Fill in the car's details to get an estimated price.")
 
@@ -32,7 +38,7 @@ st.write("Fill in the car's details to get an estimated price.")
 col1, col2 = st.columns(2)
 
 with col1:
-    brand_choice = st.selectbox("Brand", dropdown_options['Brand'] + ['Other / Not listed'])
+    brand_choice = st.selectbox("Brand", all_brands)
     location = st.selectbox("Location", dropdown_options['Location'])
     fuel_type = st.selectbox("Fuel Type", dropdown_options['Fuel_Type'])
     transmission = st.selectbox("Transmission", dropdown_options['Transmission'])
